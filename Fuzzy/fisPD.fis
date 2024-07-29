@@ -1,0 +1,47 @@
+[System]
+Name='fisPD'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='E'
+Range=[-100 100]
+NumMFs=3
+MF1='Z':'trimf',[-100 0 100]
+MF2='P':'trimf',[0 100 200]
+MF3='N':'trimf',[-200 -100 0]
+
+[Input2]
+Name='dE'
+Range=[-100 100]
+NumMFs=3
+MF1='Z':'trimf',[-100 0 100]
+MF2='P':'trimf',[0 100 200]
+MF3='N':'trimf',[-200 -100 0]
+
+[Output1]
+Name='U'
+Range=[0 24]
+NumMFs=3
+MF1='Min':'constant',[0]
+MF2='Zero':'constant',[12]
+MF3='Max':'constant',[24]
+
+[Rules]
+3 2, 2 (1) : 1
+3 1, 1 (1) : 1
+3 3, 1 (1) : 1
+1 2, 3 (1) : 1
+1 1, 2 (1) : 1
+1 3, 1 (1) : 1
+2 2, 3 (1) : 1
+2 1, 3 (1) : 1
+2 3, 2 (1) : 1
